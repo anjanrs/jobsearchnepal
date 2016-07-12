@@ -1,0 +1,50 @@
+{% extends 'account.html.twig' %}
+{% block account_body %}
+    <div class="page-header">
+        <h3>Resumes</h3>
+    </div>
+    {{ form_start(form,{'attr': {'id': 'userresume', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form.uploadedFile,{"attr": {"class": "form-control", "style": "display:none"}}) }}
+    <div class="form-group">
+        <div class="col-sm-12">
+            {{ form_widget(form.upload, {"attr": {"class": "btn btn-default btn-primary btn-lg"}}) }}
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <tbody>
+            {% for resume in resumes %}
+                <tr>
+                    <td>
+                        {{ resume.resumefilename }}
+                    </td>
+                    <td>
+                        <a href='{{ path("download-resume",{'id' : resume.id}) }}'>Download</a>
+                    </td>
+                    <td>
+                        <a href='{{ path("remove-resume",{'id' : resume.id}) }}'>Remove</a>
+                    </td>
+
+                    <td>
+                        {% if resume.preferred %}
+                            Preferred
+                        {%  else %}
+                            <a href='{{ path("prefer-resume",{'id' : resume.id}) }}'>Prefer</a>
+                        {% endif %}
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+{% block footer_javascripts %}
+    {{ parent() }}
+    <script>
+        requirejs(['appjs/user-resume']);
+    </script>
+
+{% endblock %}

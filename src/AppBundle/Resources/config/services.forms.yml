@@ -1,0 +1,41 @@
+services:
+    jsn.form.userregistration:
+        class: AppBundle\Form\UserRegistrationType
+        tags:
+            - { name: form.type, alias: userregistration }
+    jsn.form.postjob:
+          class: AppBundle\Form\PostJobType
+          tags:
+              - { name: form.type, alias: postjob }
+    jsn.form.editemployercontact:
+          class: AppBundle\Form\UserContactType
+          tags:
+              - { name: form.type, alias: usercontact }
+    jsn.form.useraddress:
+          class: AppBundle\Form\UserAddressType
+          tags:
+              - { name: form.type, alias: useraddress }
+    jsn.form.screenidentity:
+          class: AppBundle\Form\UserScreenIdentityType
+          tags:
+              - { name: form.type, alias: userscreenidentity }
+    jsn.form.userresume:
+          class: AppBundle\Form\UserResumeType
+          tags:
+              - { name: form.type, alias: userresume }
+    jsn.form.userservice:
+          class: AppBundle\Form\UserServiceType
+          tags:
+              - { name: form.type, alias: userservice }
+    jsn.form.userrate:
+          class: AppBundle\Form\UserRateType
+          tags:
+              - { name: form.type, alias: userrate }
+    jsn.form.jobapplication:
+          class: AppBundle\Form\JobApplicationType
+          tags:
+              - { name: form.type, alias: jobapplication }
+    jsn.form.message:
+          class: AppBundle\Form\MessageType
+          tags:
+              - { name: form.type, alias: message }

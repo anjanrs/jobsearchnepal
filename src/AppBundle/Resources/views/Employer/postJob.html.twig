@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}">
+{% endblock %}
+{% block banner %}{% endblock %}
+{% block body %}
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h3>Post a Job</h3>
+                </div>
+
+                {{ form_start(form,{'attr': {'id': 'postjob', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+                {{ form_errors(form.title) }}
+                {{ form_errors(form.description) }}
+                {{ form_errors(form.validTill) }}
+                {{ form_errors(form.jobType) }}
+                {{ form_errors(form.rateType) }}
+                {{ form_errors(form.jobCategory) }}
+                {{ form_errors(form.location) }}
+                {% for err in  registration_errors %}
+                    <ul>
+                        <li>{{ err.message }}</li>
+                    </ul>
+                {% endfor %}
+                <div class="form-group">
+                    {{ form_label(form.title, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.title,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.description, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.description,{'attr': {'class': 'form-control tinymice'}})  }}
+                   </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.validTill, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        <div class='input-group date' id='datetimepicker1'>
+                            {{ form_widget(form.validTill,{'attr': {'class': 'form-control'}})  }}
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.jobType, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.jobType,{'attr': {'class': 'form-control'}})  }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.rate, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.rate,{'attr': {'class': 'form-control'}})  }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.rateType, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.rateType,{'attr': {'class': 'form-control'}})  }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.jobCategory, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.jobCategory,{'attr': {'class': 'form-control'}})  }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.location, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.location,{'attr': {'class': 'form-control'}})  }}
+                    </div>
+                </div>
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <div>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label>Sign in to post</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            {{ form_widget(form.sign_in,{'attr': {'class': ''}})  }}
+                        </div>
+                    </div>
+                    <div id="sign-in-controls">
+                        <div class="form-group">
+                            {{ form_label(form.sign_in_email, null, {'label_attr': {'class': 'col-sm-2 control-label'}})  }}
+                            <div class="col-sm-6">
+                                {{ form_widget(form.sign_in_email,{'attr': {'class': 'form-control'}})  }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.sign_in_password, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                            <div class="col-sm-6">
+                                {{ form_widget(form.sign_in_password,{'attr': {'class': 'form-control'}})  }}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="register-controls" style="display:none">
+                        <div class="form-group">
+                            {{ form_label(form.register.fullname, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                            <div class="col-sm-6">
+                                {{ form_widget(form.register.fullname,{'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.register.email, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                            <div class="col-sm-6">
+                                {{ form_widget(form.register.email,{'attr': {'class': 'form-control'}})  }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.register.password, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                            <div class="col-sm-6">
+                                {{ form_widget(form.register.password,{'attr': {'class': 'form-control'}})  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif  %}
+                <div  class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {{ form_widget(form.post_job,{'attr': {'class': 'btn btn-default btn-primary'}}) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer_javascripts %}
+    {{ parent() }}
+    <script>
+         requirejs(['appjs/post-job']);
+    </script>
+{% endblock %}
+

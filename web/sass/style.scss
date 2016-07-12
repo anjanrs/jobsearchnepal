@@ -1,0 +1,85 @@
+@import "jsn-variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "compass";
+
+body { padding-top: 50px; }
+
+.jsn-navbar {
+  border-top: 3px solid #4c83c3;
+  background-color: #eee;
+}
+
+.jsn-banner {
+  @extend .jumbotron;
+  margin-bottom: 0px;
+  background-color: #4c83c3;
+}
+
+.jsn-main-search {
+  color: white;
+  background: black;
+  height: 400px;
+  @include opacity(0.70);
+  @include border-radius(10px);
+}
+
+.jsn-footer {
+  background: #333;
+  color: #FFF;
+  padding: 30px 0;
+  margin: 24px 0 0 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+    }
+  }
+  .jsn-footer-lower {
+    margin-top: 96px;
+    p {
+      text-align: left;
+      float: left;
+    }
+  }
+}
+
+.jsn-hero-banner {
+  background-image: url("/images/hero.jpg");
+  background-size: cover;
+  height: 92vh;
+  padding-top: 40px;
+}
+
+.jsn-body {
+  .jsn-job-category {
+    background-color: #EDEDED;
+    padding: 10px 10px 10px 20px;
+    margin-bottom: 30px;
+    @include border-radius(5px);
+    &:hover {
+      background-color: #3175AF;
+      color: #fff;
+    }
+  }
+}
+
+.jsn-body {
+  padding-top: 20px;
+}
+
+.jsn-job-list {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.jsn-nav-secondary {
+  background-color: #E4E4E4;
+  .navbar-btn {
+    margin-top: 6px;
+    margin-bottom: 0px;
+  }
+}

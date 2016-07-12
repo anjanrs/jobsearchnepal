@@ -1,0 +1,25 @@
+{
+  "name": "jobsearchnepal",
+  "authors": [
+    "anjanrajshakya@gmail.com"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "html5shiv": "~3.7.3",
+    "respond": "~1.4.2",
+    "moment": "~2.10.6",
+    "bootstrap-sass": "~3.3.6",
+    "bootstrapvalidator": "~0.5.3",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "jtable": "~2.4.0",
+    "selectize": "~0.12.1"
+  }
+}

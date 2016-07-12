@@ -1,0 +1,78 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        AppBundle\Entity\User:
+          algorithm: bcrypt
+        #Symfony\Component\Security\Core\User\User: plaintext
+
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        #our_db_provider:
+        #    entity:
+        #        class: AppBundle:User
+                # if you're using multiple entity managers
+                # manager_name: customer
+        custom_user_provider:
+            id: jsn.security.user_provider
+       # in_memory:
+       #     memory:
+        #        users:
+        #            ryan:
+        #                password: ryanpass
+        #                roles: 'ROLE_USER'
+        #            admin:
+        #                password: kitten
+        #                roles: 'ROLE_ADMIN'
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            provider: custom_user_provider
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            form_login:
+                login_path: /login
+                check_path: /login_check
+            logout:
+                path: /logout
+                target: /
+            remember_me:
+                key: "%secret%"
+                lifetime: 604800 # 1 week in seconds
+                path: /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        #- { path: ^/post/job, roles: [ROLE_ADMIN, IS_AUTHENTICATED_ANONYMOUSLY] }
+        #- {path: /login, access: "isAnonymous()" }
+        - {path: /user/register, access: "isAnonymous()" }
+        - {path: ^/profile/resume, roles: ROLE_WORKER }
+        - {path: ^/profile/services, roles: ROLE_WORKER }
+        - {path: ^/add/service, roles: ROLE_WORKER }
+        - {path: ^/worker/*, roles: ROLE_WORKER }
+        - {path: /list/applications, roles: ROLE_WORKER }
+
+        - {path: ^/profile/*, roles: [ROLE_ADMIN, ROLE_EMPLOYER, ROLE_WORKER] }
+        - {path: ^/emp/*, roles: [ROLE_ADMIN, ROLE_EMPLOYER] }
+        - {path: ^/message/inbox, roles: [IS_AUTHENTICATED_REMEMBERED] }
+        - {path: ^/message/sent, roles: [IS_AUTHENTICATED_REMEMBERED] }
+        - {path: ^/message/detail/*, roles: [IS_AUTHENTICATED_REMEMBERED] }
+
+jms_security_extra:
+    expressions: true

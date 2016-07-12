@@ -1,0 +1,12 @@
+#workerrest:
+#  type: rest
+#  resource: AppBundle\Controller\Api\WorkerRestController
+
+#jobrest:
+#  type: rest
+#  resource: AppBundle\Controller\Api\JobRestController
+
+#api:
+#    resource: "@AppBundle/Controller/Api"
+#    type:     annotation
+#    defaults: {_format: json} 

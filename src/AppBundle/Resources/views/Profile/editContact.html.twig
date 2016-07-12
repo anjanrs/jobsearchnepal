@@ -1,0 +1,80 @@
+{% extends 'account.html.twig' %}
+{% block account_body %}
+
+            <div class="page-header">
+                <h3>Edit Contact Information</h3>
+            </div>
+            <div class="page-header">
+                <h4>Personal Info</h4>
+            </div>
+            {{ form_start(formPersonalInfo,{'attr': {'id': 'editpersonalinfo', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(formPersonalInfo) }}
+                <div class="form-group">
+                    {{ form_label(formPersonalInfo.firstname, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formPersonalInfo.firstname,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formPersonalInfo.lastname, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formPersonalInfo.lastname,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formPersonalInfo.email, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formPersonalInfo.email,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formPersonalInfo.userprofile.company_name, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formPersonalInfo.userprofile.company_name,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formPersonalInfo.userprofile.phone_number, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formPersonalInfo.userprofile.phone_number,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div  class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {{ form_widget(formPersonalInfo.save_personal_info,{'attr': {'class': 'btn btn-default btn-primary'}}) }}
+                    </div>
+                </div>
+            {{ form_end(formPersonalInfo) }}
+
+            <div class="page-header">
+                <h4>Address</h4>
+            </div>
+            {{ form_start(formAddress,{'attr': {'id': 'editaddress', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(formAddress) }}
+                <div class="form-group">
+                    {{ form_label(formAddress.city, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formAddress.city, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formAddress.district, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formAddress.district, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(formAddress.zone, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(formAddress.zone, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {{ form_widget(formAddress.save_address, {'attr': {'class': 'btn btn-default btn-primary'}}) }}
+                    </div>
+                </div>
+            {{ form_end(formAddress) }}
+
+
+{% endblock %}

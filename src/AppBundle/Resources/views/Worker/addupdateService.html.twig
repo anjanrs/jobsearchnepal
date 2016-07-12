@@ -1,0 +1,56 @@
+{% extends 'account.html.twig' %}
+{% block account_body %}
+    <div class="page-header">
+        <h3>Add/Update Service</h3>
+    </div>
+    {{ form_start(form, {'attr': {'id': 'add-user-service', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+        {{ form_errors(form.title) }}
+        {{ form_errors(form.description) }}
+        {{ form_errors(form.rate) }}
+        {{ form_errors(form.rateType) }}
+        {{ form_errors(form.minimumBudget) }}
+        {{ form_errors(form.jobCategory) }}
+        <div class="form-group">
+            {{ form_label(form.title, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.description, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.rate, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.rate, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.rateType, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.rateType, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.minimumBudget, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.minimumBudget, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.jobCategory, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.jobCategory, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-default btn-primary'}}) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block banner %}{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-3">
+            {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.searchKey, 'Keywords')  }}
+                    {{ form_widget(form.searchKey,{'attr': {'class': 'form-control', 'placeholder': 'Search for..'}})}}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.jobCategory, 'Category')  }}
+                    {{ form_widget(form.jobCategory,{'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.location, 'Where')  }}
+                    {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.jobType, 'Work Type')  }}
+                    {{ form_widget(form.jobType,{'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.dateRange, 'Date range')  }}
+                    {{ form_widget(form.dateRange,{'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                  {{ form_widget(form.btnsearch,{'attr': {'class': 'btn btn-default btn-primary', 'type': 'button'}})}}
+                </div>
+
+            {{ form_end(form) }}
+        </div>
+        <div class="col-sm-9 col-xs-12">
+            
+        {% for job in jobs %}
+            <div class="jsn-job-list">
+                    <h4><a href="{{ path('job-detail', {'jobid' : job.id}) }}">{{ job.title }}</a></h4>
+                    ( {{ job.post_date|date("Y-m-d H:m:s") }} ) <br>
+                    {{ job.terse }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

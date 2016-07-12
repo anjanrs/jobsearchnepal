@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block banner %} {% endblock %}
+{% block body %}
+<div class="col-xm-12">
+	<div class="page-header">
+		<h3>Messages</h3>
+	</div>
+</div>
+<div class="col-sm-3">
+	<div class="list-group">
+		<a href="{{ path('msg-inbox') }}" class="list-group-item {{ (app.request.get('_route') == 'msg-inbox' ) ? 'active': '' }}">Inbox</a>
+		<a href="{{ path('msg-sent') }}" class="list-group-item {{ (app.request.get('_route') == 'msg-sent' ) ? 'active': '' }}">sent</a>
+	</div>
+</div>
+<div class="col-sm-9">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-border">
+					<tr>
+						<th>Date</th>
+						<th>From</th>
+						<th colspan="2">Message</th>
+					<tr>
+					{% for msg in messages %}
+						<tr {{ msg.readBefore ? '': 'style="font-weight:bold"' }}>
+							<td>{{ msg.messageDateTime|date("Y-m-d H:m:s") }} </td>
+							<td>{{ msg.fromUser.fullname }} </td>
+							<td>{{ msg.message|raw }} </td>
+							<td><a href="{{ path('msg-detail', {'id': msg.id}) }}">View Message</a></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		
+		</div>
+	</div>
+</div>
+{% endblock %}
+

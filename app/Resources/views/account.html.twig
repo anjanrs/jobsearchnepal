@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block banner %}{% endblock %}
+{% block body %}
+{%
+    set navs = [
+        {"path" : "prf-contactdetails", "label": "Contact Information"},
+        {"path":"prf-screenidentity", "label": "Screen Identity"},
+        {"path":"homepage", "label": "Email Settings"},
+        {"path":"prf-username", "label": "Username"},
+        {"path":"prf-password", "label": "Password"},
+        {"path":"homepage", "label": "Delete Account"},
+        {"path":"homepage", "label": "Social Networks"},
+    ]
+%}
+{% if is_granted("ROLE_WORKER") %}
+{%
+    set navs = navs|merge([
+        {"path":"prf-resume", "label": "Resumes"},
+        {"path":"list-worker-services", "label": "Services"},
+        {"path":"worker-skill", "label": "Skills"},
+        {"path":"worker-rate", "label": "Rate"},
+    ])
+%}
+{% endif %}
+
+<div class="col-sm-12">
+    <div class="page-header">
+        <h2>Edit My Account</h2>
+    </div>
+</div>
+<div class="col-sm-3">
+    <div class="list-group text-center">
+        <a class="list-group-item" href="{{ path("prf-contactdetails") }}">
+            {% set screenImage = app.user.userProfile? (app.user.userProfile.screenimage ? app.user.userProfile.screenimage : 'default-user_image.png') : 'default-user_image.png' %}
+            <img class="img-thumbnail" src="{{ asset('images/uploads/emp/screenidentity/' ~ screenImage) }}" style="width:100px;height:auto;"/><br>
+            {{ (app.user.userProfile)? app.user.userProfile.screenname : app.user.username }}
+        </a>
+        {%  for nav in navs %}
+            <a class="list-group-item {{ (app.request.get('_route') == nav.path ) ? 'active': '' }}" href="{{ path(nav.path) }}">{{ nav.label }}</a>
+        {% endfor %}
+    </div>
+</div>
+<div class="col-sm-9">
+<div class="panel panel-default">
+    <div class="panel-body">
+       {% block account_body %}{% endblock %}
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

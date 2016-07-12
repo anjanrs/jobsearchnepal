@@ -1,0 +1,22 @@
+{% extends 'account.html.twig' %}
+{% block account_body %}
+    <div class="page-header">
+        <h3>Services</h3>
+    </div>
+
+            <div class="form-group">
+                <a href="{{ path("add-worker-service") }}" class="btn btn-primary btn-lg">Add Service</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered">
+                    {% for service in services %}
+                    <tr>
+                        <td>{{ service.title }}</td>
+                        <td><a href="{{ path("edit-worker-service", {"id": service.id}) }}">Edit</a></td>
+                        <td><a href="{{ path("delete-worker-service", {"id": service.id}) }}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+{% endblock %}

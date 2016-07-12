@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block banner %}{% endblock %}
+{% block body %}
+    <div class="page-header">
+        <h3>Jobs Applied</h3>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Applied Date</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for application in applications %}
+                        <tr>
+                            <td>{{ application.job.title }}</td>
+                            <td>{{ application.applicationDate is empty ? "" : application.applicationDate|date("Y-m-d") }}</td>
+                            <td><a href="{{ path("view-application-detail", {"id": application.id}) }}">View Detail</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

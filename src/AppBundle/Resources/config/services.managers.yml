@@ -1,0 +1,15 @@
+services:
+    jsn.manager.user:
+        class: AppBundle\Service\UserManager
+        arguments: [@doctrine, @security.password_encoder ]
+        calls:
+            - [setUserProvider, [@jsn.security.user_provider]]
+    jsn.manager.job:
+        class: AppBundle\Service\JobManager
+        arguments: [@doctrine]
+    jsn.manager.worker.profile:
+        class: AppBundle\Service\WorkerProfileManager
+        arguments: [@doctrine]
+    jsn.manager.message:
+        class: AppBundle\Service\MessageManager
+        arguments: [@doctrine]

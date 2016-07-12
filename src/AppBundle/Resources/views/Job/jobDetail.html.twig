@@ -1,0 +1,32 @@
+{% set allowapply = false %}
+{# allow apply only for worker and anonymous #}
+{%  if app.user %}
+    {% if is_granted('ROLE_WORKER') %}
+        {% set allowapply = true %}
+    {% endif %}
+{% else %}
+    {% set allowapply = true %}
+{% endif %}
+{% extends 'base.html.twig' %}
+{% block banner %}{% endblock %}
+{% block body %}
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h2>{{ job.title }}</h2>
+                </div>
+                <div class="form-group">
+                    <p>{{ job.description }}</p>
+                </div>
+                {% if allowapply %}
+                    <div class="form-group pull-right">
+                        <a href='{{ path("apply-job", {'id': job.id}) }}' class="btn btn-default btn-success btn-lg">Apply Now</a>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+
+{% endblock %}

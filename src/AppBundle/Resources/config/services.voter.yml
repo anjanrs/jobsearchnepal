@@ -1,0 +1,26 @@
+services:
+  security.access.message_voter:
+    class:      AppBundle\Security\Authorization\Voter\MessageVoter
+    public: false
+    tags:
+        - { name: security.voter }
+  security.access.userresume_voter:
+    class:      AppBundle\Security\Authorization\Voter\UserResumeVoter
+    public: false
+    tags:
+        - { name: security.voter }
+  security.access.userservice_voter:
+    class:      AppBundle\Security\Authorization\Voter\UserServiceVoter
+    public: false
+    tags:
+        - { name: security.voter }
+  security.access.job_voter:
+    class:      AppBundle\Security\Authorization\Voter\JobVoter
+    public: false
+    tags:
+        - { name: security.voter }
+  security.access.jobapplication_voter:
+    class:      AppBundle\Security\Authorization\Voter\JobApplicationVoter
+    public: false
+    tags:
+        - { name: security.voter }

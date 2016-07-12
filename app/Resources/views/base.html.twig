@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome to Job Search Nepal! Build with Symfony, Bootstrap{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block header_javascripts %}
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <script src="{{ asset('js/lib/require.js') }}"></script>
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+            <script src="{{ asset('bower_components/html5shiv/dist/html5shiv.min.js') }}"></script>
+            <script src="{{ asset('bower_components/respond/dest/respond.min.js') }}"></script>
+            <![endif]-->
+        {% endblock %}
+    </head>
+    <body>
+
+        <header>
+            {% block nav %}{{ include('nav.html.twig') }}{% endblock %}
+            {% block banner %}{{ include('banner.html.twig') }}{% endblock %}
+        </header>
+        {% block herobanner %}{% endblock %}
+        <section class="container jsn-body">
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
+        </section>
+
+        <footer class="jsn-footer">
+            {% block footer %}{{ include('footer.html.twig') }}{% endblock %}
+        </footer>
+
+        {% block footer_javascripts %}
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script>
+                requirejs(['bootstrap']);
+            </script>
+        {% endblock %}
+    </body>
+</html>

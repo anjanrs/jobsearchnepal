@@ -1,0 +1,10 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+#restapi:
+#    type: rest
+#    resource: "@AppBundle/Resources/config/routing.yml"
+
+logout:
+    path: /logout

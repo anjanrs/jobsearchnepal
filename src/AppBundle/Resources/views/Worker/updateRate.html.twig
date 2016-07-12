@@ -1,0 +1,34 @@
+{% extends 'account.html.twig' %}
+{% block account_body %}
+    <div class="page-header">
+        <h3>Update Rate</h3>
+    </div>
+    {{ form_start(form, {'attr': {'id': 'update-worker-rate', 'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+    {{ form_errors(form.rate) }}
+    {{ form_errors(form.rateType) }}
+    <div class="form-group">
+        {{ form_label(form.rateType, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.rateType, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.rate, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.rate, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-default btn-primary'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block footer_javascripts %}
+    {{ parent() }}
+    <script>
+//        requirejs(['appjs/worker-skills']);
+    </script>
+{% endblock %}
